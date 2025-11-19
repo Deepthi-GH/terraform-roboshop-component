@@ -11,6 +11,7 @@ locals {
     host_context       = "${var.component}" == "frontend" ? "${var.project_name}-${var.environment}.${var.domain_name}" : "${var.component}.backend-alb-${var.environment}.${var.domain_name}"
     frontend_alb_certificate_arn = data.aws_ssm_parameter.frontend_alb_certificate_arn.value
     private_subnet_ids = split(",",data.aws_ssm_parameter.private_subnet_ids.value)
+    private_subnet_id = split(",",data.aws_ssm_parameter.private_subnet_ids.value)[0]
     common_tags   = {
     Project   = var.project_name
     Environment = var.environment
