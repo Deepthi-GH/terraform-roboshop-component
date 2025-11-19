@@ -44,14 +44,14 @@ provisioner "remote-exec" {
 }
 }
 
-resource "aws_route53_record" "catalogue" {
-  zone_id = var.zone_id
-  name    = "catalogue-${var.environment}.${var.domain_name}" # catalogue-dev.deepthi.cloud
-  type    = "A"
-  ttl     = 1
-  records = [aws_instance.catalogue.private_ip]
-  allow_overwrite = true
-}
+# resource "aws_route53_record" "catalogue" {
+#   zone_id = var.zone_id
+#   name    = "catalogue-${var.environment}.${var.domain_name}" # catalogue-dev.deepthi.cloud
+#   type    = "A"
+#   ttl     = 1
+#   records = [aws_instance.catalogue.private_ip]
+#   allow_overwrite = true
+# }
 
 # stop the instance to take AMI
 resource "aws_ec2_instance_state" "main" {
